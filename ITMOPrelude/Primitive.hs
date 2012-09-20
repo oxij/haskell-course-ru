@@ -26,7 +26,7 @@ example2''''' = z where
 undefined = undefined
 
 -- Ниже следует реализовать все термы, состоящие из undefined заглушки.
--- Любые термы можно переписывать (natEq и natLe --- хорошие кандидаты).
+-- Любые термы можно переписывать (natEq и natLt --- хорошие кандидаты).
 
 -------------------------------------------
 -- Примитивные типы
@@ -54,7 +54,7 @@ if' True a b = a
 if' False a b = b
 
 -- Трихотомия. Замечательный тип, показывающий результат сравнения
-data Tri = LE | EQ | GT deriving (Show,Read)
+data Tri = LT | EQ | GT deriving (Show,Read)
 
 -------------------------------------------
 -- Натуральные числа
@@ -76,11 +76,11 @@ natEq (Succ _) Zero     = False
 natEq (Succ n) (Succ m) = natEq n m
 
 -- n меньше m
-natLe :: Nat -> Nat -> Bool
-natLe Zero     Zero     = False
-natLe Zero     (Succ m) = True
-natLe (Succ n) Zero     = False
-natLe (Succ n) (Succ m) = natLe n m
+natLt :: Nat -> Nat -> Bool
+natLt Zero     Zero     = False
+natLt Zero     (Succ m) = True
+natLt (Succ n) Zero     = False
+natLt (Succ n) (Succ m) = natLt n m
 
 infixl 6 +.
 -- Сложение для натуральных чисел
@@ -131,8 +131,8 @@ intCmp = undefined
 intEq :: Int -> Int -> Bool
 intEq = undefined
 
-intLe :: Int -> Int -> Bool
-intLe = undefined
+intLt :: Int -> Int -> Bool
+intLt = undefined
 
 infixl 6 .+., .-.
 -- У меня это единственный страшный терм во всём файле
@@ -165,8 +165,8 @@ ratCmp = undefined
 ratEq :: Rat -> Rat -> Bool
 ratEq = undefined
 
-ratLe :: Rat -> Rat -> Bool
-ratLe = undefined
+ratLt :: Rat -> Rat -> Bool
+ratLt = undefined
 
 infixl 7 %+, %-
 (%+) :: Rat -> Rat -> Rat

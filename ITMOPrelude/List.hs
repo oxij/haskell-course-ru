@@ -143,7 +143,7 @@ foldr f z l = undefined
 
 -- Аналогично
 --  head (scanr f z xs) == foldr f z xs.
-scanr :: (a -> b -> b) -> b -> [a] -> [b]
+scanr :: (a -> b -> b) -> b -> List a -> List b
 scanr = undefined
 
 -- Должно завершаться за конечное время

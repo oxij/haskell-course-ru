@@ -57,6 +57,26 @@ if' False a b = b
 data Tri = LT | EQ | GT deriving (Show,Read)
 
 -------------------------------------------
+-- Булевы значения
+
+-- Логическое "НЕ"
+not :: Bool -> Bool
+not True = False
+not False = True
+
+infixr 3 &&
+-- Логическое "И"
+(&&) :: Bool -> Bool -> Bool
+True  && x = x
+False && _ = False
+
+infixr 2 ||
+-- Логическое "ИЛИ"
+(||) :: Bool -> Bool -> Bool
+True  || _ = True
+False || x = x
+
+-------------------------------------------
 -- Натуральные числа
 
 data Nat = Zero | Succ Nat deriving (Show,Read)

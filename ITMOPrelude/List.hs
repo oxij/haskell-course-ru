@@ -70,11 +70,12 @@ takeWhile = undefined
 dropWhile :: (a -> Bool) -> List a -> List a
 dropWhile = undefined
 
--- Разбить список в пару (найбольший префикс удовлетворяющий p, всё остальное)
+-- Разбить список по предикату на (takeWhile p xs, dropWhile p xs),
+-- но эффективнее
 span :: (a -> Bool) -> List a -> Pair (List a) (List a)
 span p = undefined
 
--- Разбить список по предикату на (takeWhile p xs, dropWhile p xs),
+-- Разбить список по предикату на (takeWhile (not . p) xs, dropWhile (not . p) xs),
 -- но эффективнее
 break :: (a -> Bool) -> List a -> Pair (List a) (List a)
 break = undefined

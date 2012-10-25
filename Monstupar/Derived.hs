@@ -27,16 +27,19 @@ oneOf = undefined
 string :: Eq s => [s] -> Monstupar s [s]
 string = undefined
 
--- "Звёздочка" -- запустить парсер максимальное число раз и саккумулировать
--- результыты
+-- "Звёздочка" -- запустить парсер максимальное (ноль или более) число раз и
+-- саккумулировать результыты
 many :: Monstupar s a -> Monstupar s [a]
 many p = undefined
 -- Аккуратно с реализацией! Следите за тем, чтобы у вас из-за использования <|>
 -- не рос в бесконечность стек.
 
--- "Плюсик"
+-- "Плюсик" -- один или более раз
 many1 :: Monstupar s a -> Monstupar s [a]
-many1 p = p >> many p
+many1 p = do
+    e <- p
+    es <- many p
+    return (e:es)
 
 -- "Вопросик" -- ноль или один раз
 optional :: Monstupar s a -> Monstupar s (Maybe a)

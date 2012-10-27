@@ -2,8 +2,8 @@
 module ITMOPrelude.Categories.ToMonadJoin where
 import ITMOPrelude.Categories.MonadJoin
 
--- Из этих
+-- Эти
 import ITMOPrelude.Categories
 import ITMOPrelude.Categories.MonadFish
 
--- делаем эту
+-- делаем из нас

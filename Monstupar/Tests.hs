@@ -7,7 +7,7 @@ import Monstupar.Derived
 -- В помощь хозяйке
 
 mustParse s p = case runParser p s of
-    Left _ -> False
+    Left  _ -> False
     Right _ -> True
 
 mustFail s = not . mustParse s
@@ -19,11 +19,12 @@ infixl 2 &.&
 -- Тесты
 
 -- Правильная скобочная последовательность
-balPar = eof <|> (string "()" >> return ()) <|> (do
-    char '('
-    balPar
-    char ')'
-    balPar)
+balPar = bp >> eof where
+    bp = (do
+          char '('
+          bp
+          char ')'
+          bp) <|> ok
 
 balParTest = mustParse ""
          &.& mustFail  "("
